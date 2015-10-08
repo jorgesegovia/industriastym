@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vfcons.vferp.persistence.UserMapper">
+
+	<select id="findByName" parameterType="String" resultType="User">
+		SELECT 	ID_SYSTEMUSER as id,
+				USER_NAME as name,
+				USER_PASSWORD as pw,
+				NULL as email
+		FROM SYSTEM_USER
+		WHERE USER_NAME = #{userName}
+	</select>
+
+	<select id="count" resultType="Integer">
+		SELECT count(1)
+		FROM SYSTEM_USER
+	</select>
+
+	<update id="modifyLastLogin" parameterType="User" flushCache="true"
+		statementType="PREPARED">
+		UPDATE SYSTEM_USER SET
+			LOGIN_DATE = SYSDATE()
+		WHERE USER_NAME = #{name}
+	</update>
+
+</mapper>

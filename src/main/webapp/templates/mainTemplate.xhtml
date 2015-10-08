@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<f:view contentType="text/html" id="fview">
+	<title>Welcome to VFERP</title>
+	<ui:debug />
+	<h:head>
+		<f:facet name="first">
+			<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		</f:facet>
+	</h:head>
+	<h:body>
+		<p:layout fullPage="true" style="padding: 20px;">
+			<ui:include src="/templates/header.xhtml" />
+			<ui:include src="/templates/menu.xhtml" />
+			<ui:insert name="content" />
+			<ui:include src="/templates/notification.xhtml" />
+			<ui:include src="/templates/footer.xhtml" />
+		</p:layout>
+	</h:body>
+</f:view>
+
+</html>

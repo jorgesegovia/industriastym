@@ -1,0 +1,17 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+	<p:layoutUnit position="north" size="100" resizable="true">
+		<h:graphicImage value="/resources/images/logo.png" height="100"
+			width="200" />
+		<h:panelGroup layout="block"
+			style="width: 200px; height: 70px; float: right;">
+			<h:outputLabel value="#{companyView.selectedCompany.name}" />
+		</h:panelGroup>
+	</p:layoutUnit>
+
+</ui:composition>

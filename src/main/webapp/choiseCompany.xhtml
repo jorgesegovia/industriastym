@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<f:view contentType="text/html" id="fview">
+
+	<title>VFConsulting</title>
+
+	<h:head>
+
+		<style>
+</style>
+
+		<f:facet name="first">
+			<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		</f:facet>
+
+	</h:head>
+
+	<h:body>
+		<h:form id="chooseCompanyForm">
+
+			<f:event type="preRenderView" listener="#{companyView.preRenderView}" />
+
+			<p:panel id="companyPn" header="Login"
+				style="margin-bottom: 10px; width: 30%;">
+				<p:selectOneMenu id="companySom"
+					style="width: 250px; text-align: center;"
+					value="#{companyView.selectedCompany}" converter="companyConverter"
+					var="c" filter="true" filterMatchMode="contains">
+					<p:ajax event="change" update="companySom" />
+					<f:selectItems value="#{companyView.companies}" var="company"
+						itemLabel="#{company.name}" itemValue="#{company}" />
+					<p:column>
+						<h:outputText value="#{c.name}" />
+					</p:column>
+				</p:selectOneMenu>
+				<h:panelGroup
+					style="display:block; text-align:center; padding: 3px;">
+					<p:commandButton actionListener="#{companyView.onSelectCompany}"
+						disabled="#{companyView.sizeCompanies == 0}" value="Seguir" />
+				</h:panelGroup>
+			</p:panel>
+		</h:form>
+	</h:body>
+
+</f:view>
+
+</html>

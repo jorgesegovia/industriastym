@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content">
+
+		<div class="layout-portlets-box">
+			<div class="Container50 Responsive50">
+				<div class="ContainerIndent">
+					<h1 class="BigTopic">Registrar Usuario</h1>
+					<h:form>
+						<h:panelGrid id="userGrid" columns="3" cellpadding="5">
+							<h:outputLabel for="usuario" value="Usuario:" />
+							<p:inputText id="usuario" value="#{userView.currentUser.name}"
+								required="true" />
+							<p:message for="usuario" display="tooltip" />
+
+							<h:outputLabel value="Password:" />
+							<p:password value="#{userView.currentUser.pw}" />
+							<h:inputHidden />
+
+							<h:outputLabel value="Confirmar password:" />
+							<p:password value="#{userView.secondPw}" />
+							<h:inputHidden />
+
+							<h:outputLabel for="email" value="Email:" />
+							<p:inputText id="email" value="#{userView.currentUser.email}"
+								required="true" />
+							<p:message for="email" display="tooltip" />
+
+							<h:outputText value="Activo:" />
+							<p:selectBooleanButton onLabel="Yes" offLabel="No"
+								style="width:60px" />
+							<h:inputHidden />
+
+							<p:commandButton value="Registrar"
+								actionListener="#{userView.register}" update="userGrid"
+								icon="fa fa-home Fs16 white" />
+
+						</h:panelGrid>
+					</h:form>
+				</div>
+			</div>
+			<div class="Container50 Responsive50">
+				<div class="ContainerIndent">
+					<h1 class="BigTopic">Color Buttons</h1>
+					<h:form>
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="Default Button" />
+							<p:button value="Default Theme Button" />
+							<h:outputText value="Green Button" />
+							<p:button value="Green Button" styleClass="GreenButton" />
+							<h:outputText value="Red Button" />
+							<p:button value="Red Button" styleClass="RedButton" />
+							<h:outputText value="Blue Button" />
+							<p:button value="Blue Button" styleClass="BlueButton" />
+							<h:outputText value="Orange Button" />
+							<p:button value="Orange Button" styleClass="OrangeButton" />
+						</h:panelGrid>
+					</h:form>
+				</div>
+			</div>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>

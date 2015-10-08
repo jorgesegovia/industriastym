@@ -1,0 +1,34 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd        
+                           http://www.springframework.org/schema/security 
+                           http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder" >
+		<beans:constructor-arg value="x9ajDR$#Qkr91" />
+	</beans:bean>
+
+	<http use-expressions="true">
+		<intercept-url pattern="/protected.xhtml" access="isAuthenticated()" />
+		<intercept-url pattern="/**" access="permitAll()" />
+		<intercept-url pattern="/sales/**" access="hasRole('admin')" />
+
+		<!-- Custom login page -->
+		<form-login login-page="/login.xhtml" />
+
+		<!-- Custom logout page -->
+		<logout />
+	</http>
+
+	<!-- Use inline authentication provider. -->
+	<authentication-manager>
+		<authentication-provider user-service-ref="vferpUserDetailService" />
+	</authentication-manager>
+
+	<beans:bean id="vferpUserDetailService"
+		class="com.vfcons.vferp.security.VFerpUserDetailService" />
+
+</beans:beans>
+
