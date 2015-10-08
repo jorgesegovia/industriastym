@@ -6,7 +6,7 @@ import com.vfcons.vferp.domain.Company;
 
 /**
  * 
- * @author jsegovia
+ * @author wmarcelo
  * @version 1.0
  *
  */
